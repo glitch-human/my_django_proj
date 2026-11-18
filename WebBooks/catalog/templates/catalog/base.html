@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+<h1>Coding courses</h1>
+
+<p>
+    <a href="/">Main</a> |
+    <a href="/groups/">Groups</a> |
+    <a href="/students/">Students</a> |
+    <a href="/lecturers/">Lecturers</a>
+</p>
+
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Лекторы</h2>
+
+<table>
+    <tr>
+        <th>Lecturer name</th>
+    </tr>
+
+    {% for lecturer in lecturers %}
+
+    <tr>
+        <td>
+            <a href="/lecturers/{{ lecturer.id }}/">
+                {{ lecturer.name }}
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+{% block content%}
+<h3>Author list</h3>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/more_styles.css' %}">
+<table>
+    <thead>
+    <th>id</th>
+    <th>----Name----</th>
+    <th>Last name</th>
+    <th></th>
+    </thead>
+{%if author %}
+    {% for author in author.all %}
+        <tr>
+            <td>{{author.id}}</td>
+            <td>{{author.first_name}}</td>
+            <td>{{author.last_name}}</td>
+            <td>
+                <a href="/edit1/{{author.id}}">Change</a>
+                <a href="/delete/{{author.id}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% else %}
+    <p>No authors in database</p>
+{% endif %}
+</table>
+<h3>Add book authors into DB</h3>
+    <form method="post" action="/create/">
+        {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <input class="submit" type="submit" value="Save">
+    </form>
+{% endblock %}

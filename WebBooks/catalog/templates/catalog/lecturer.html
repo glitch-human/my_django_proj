@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Lecturer: {{ lecturer.name }}</h2>
+
+<h3>Courses:</h3>
+
+<table>
+    <tr>
+        <th>Course name</th>
+    </tr>
+
+    {% for course in courses %}
+
+    <tr>
+        <td>{{ course.name }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Media</title>
+</head>
+<body>
+    <h1>Upload Media Files</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Media Files</h2>
+    <ul>
+        {% for media in media_files %}
+        <li>
+            <img src="{{ media.1mage.url }}" alt="Image" style="max-width: 200px;">
+            <audio controls>
+                <source src="{{ media.audio.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

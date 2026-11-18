@@ -1,0 +1,39 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Group: {{ group.name }}</h2>
+
+<p>
+    <b>Course:</b>
+    {{ group.course.name }}
+</p>
+
+<p>
+    <b>Lecturer:</b>
+    <a href="/lecturers/{{ group.lecturer.id }}/">
+        {{ group.lecturer.name }}
+    </a>
+</p>
+
+<h3>Students:</h3>
+
+<table>
+    <tr>
+        <th>Student name</th>
+    </tr>
+
+    {% for student in group.students.all %}
+    <tr>
+        <td>
+            <a href="/students/{{ student.id }}/">
+                {{ student.name }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

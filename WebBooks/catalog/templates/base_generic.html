@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Мир книг</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Добавление статического СSS-файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'more_styles.css' %}">
+    {% block head %}
+    <img class="logo" src="{% static 'images/logotip.png' %}"
+         style="width:1OOpx; height:1OOpx;"
+         align="middle">
+    <font size="7" class="logo">Site "World of Books"</font>
+    {% endblock %}
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            {% block sidebar %}
+            <ul class="sidebar-nav">
+                <li class="Book"><a href="{% url 'index' %}">Main page</a></li>
+                <li class="Book"><a href="{% url 'books' %}">All books</a></li>
+                <li class="Book"><a href="{% url 'authors' %}">All authors</a></li>
+                <li class="Book"><a href="{% url 'authors_add' %}">Edit authors</a></li>
+                <li class="Book"><a href="{% url 'book_create' %}">Add a book</a></li>
+            </ul>
+            {% endblock %}
+            {% if user.is_authenticated %}
+            <p class="user"> You are {{user.get_username}}</p>
+                <a class="nav-link" href="{% url 'my-borrowed' %}">My orders</a>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="log" type="submit">logout</button>
+                    </form>
+
+                {% else %}
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <button class="log" type="submit">login</button>
+                    </form>
+
+            {% endif %}
+        </div>
+        <div class="col-sm-10">
+            {% block content %}{% endblock %}
+
+            {% block pagination %}
+                {% if is_paginated %}
+                    <div class="pagination">
+                        <span class="page-links">
+                            {% if page_obj.has_previous %}
+                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">
+                                    Last
+                                </a>
+                            {% endif %}
+                            <span class="page-current">
+                                Page {{ page_obj.number }} out of
+                                    {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">
+                                    next
+                                </a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block footer %}
+                {% block copyright %}
+                    <p>Copyright ItMouse.by</p>
+                {% endblock %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

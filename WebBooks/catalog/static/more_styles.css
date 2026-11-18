@@ -1,0 +1,65 @@
+.log, .submit, .edit{
+    background: #183f66;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.delete{
+    background: #FF3333;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    box-shadow: none;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.change{
+    border-radius: 5px;
+}
+
+input{
+    outline: none;
+    border-color: #183f66;
+}
+
+.logo{
+    margin-top: -35px;
+    backdrop-filter: blur(7px);
+    background: rgba(255, 255, 255, 0.2);
+    width: 200px;
+    border-radius: 10px;
+}
+
+.Book, .nav-link, .user{
+    padding: 10px 26px;
+    background: white;
+    border-radius: 5px;
+    width:120px;
+    padding:10px;
+}
+
+.col-sm-10{
+    backdrop-filter: blur(7px);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    width: 800px;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-left: -30px;
+}
+
+body {
+    background-image: url("/static/images/books.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #183f66;
+}

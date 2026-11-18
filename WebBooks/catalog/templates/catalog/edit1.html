@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %}
+<h3>List of authors in DB</h3>
+<h4>{{author.first_name}} {{author.last_name}}</h4>
+    <form method="POST">
+        {%csrf_token%}
+        <p>
+            <label>Change firstname</label><br>
+            <input class="change" type="text" name="first_name" value="{{author.first_name}}">
+        </p>
+        <p>
+            <label>Change lastname</label><br>
+            <input class="change" type="text" name="last_name" value="{{author.last_name}}">
+        </p>
+        <p>
+            <label>Change date of birth</label><br>
+            <input class="change" type="date" name="date_of_birth"
+                   value="{{author.data_of_birth}}">
+        </p>
+        <p>
+            <label>Change date of death</label><br>
+            <input class="change" type="date" name="date_of_death"
+                   value="{{author.data_of_death}}">
+        </p>
+        <input class="edit" type="submit" value="save">
+    </form>
+{% endblock %}

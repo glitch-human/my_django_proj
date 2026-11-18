@@ -1,0 +1,25 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+}
+
+h1 {
+    color: #3f4d80;
+}
+
+table {
+    width: 80%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    text-align: left;
+}
+
+a {
+    color: #351a9b;
+}
